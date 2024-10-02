@@ -28,6 +28,8 @@ The template uses:
 - Cucumber for BDD-style test writing
 - Extent Reports for detailed test reporting
 
+## Link to current test results
+https://olexiy.github.io/restassured-cucumber-template/
 ## Project Structure
 
 ```

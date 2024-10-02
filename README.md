@@ -1,5 +1,5 @@
 # RestAssured Cucumber API Testing Template
-![API Tests](https://github.com/olexiyy/restassured-cucumber-template/actions/workflows/api-tests.yml/badge.svg)
+![API Tests](https://github.com/olexiy/restassured-cucumber-template/actions/workflows/api-tests.yml/badge.svg)
 
 ## Table of Contents
 1. [Introduction](#introduction)

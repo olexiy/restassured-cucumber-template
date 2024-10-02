@@ -7,12 +7,24 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   test:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
@@ -30,18 +42,15 @@ jobs:
       - name: Run tests with Maven
         run: mvn clean test
 
-      - name: Archive test results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: test-report
-          path: target/Spark.html
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
-      - name: Deploy report to GitHub Pages
-        if: success()
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            publish_dir: target
-            publish_branch: gh-pages
-            keep_files: true
+          path: 'target/Spark.html'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        if: github.ref == 'refs/heads/main'

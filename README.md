@@ -1,5 +1,6 @@
 # RestAssured Cucumber API Testing Template
 ![API Tests](https://github.com/olexiyy/restassured-cucumber-template/actions/workflows/api-tests.yml/badge.svg)
+
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Project Structure](#project-structure)
@@ -123,8 +124,16 @@ After each GitHub Actions run:
 1. Go to the "Actions" tab in the GitHub repository
 2. Click on the latest workflow run
 3. Scroll down to the "Artifacts" section
-4. Download the "test-report" artifact to view the Extent Report
-5. Download the "cucumber-report" artifact to view any Cucumber-generated reports
+4. Download the "test-report" artifact to view the Extent Report locally
+
+Additionally, the latest test report from the main branch is automatically published to GitHub Pages. You can view it online at:
+
+https://{username}.github.io/{repository-name}/Spark.html
+
+Replace `{username}` and `{repository-name}` with your GitHub username and repository name respectively.
+
+The current status of the tests on the main branch is reflected by this badge:
+
 
 ## Framework Components
 
